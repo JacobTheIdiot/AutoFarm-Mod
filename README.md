@@ -47,4 +47,4 @@ You can customize the keybindings for toggling the mod and opening the menu. Thi
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the CC0 License - see the [LICENSE](LICENSE) file for details.
