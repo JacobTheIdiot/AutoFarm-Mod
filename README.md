@@ -3,6 +3,8 @@
 
 A simple Fabric mod for Minecraft that automates common tasks like auto-swinging, auto-eating, and auto-logging out based on health. Perfect for use in an SMP server or solo play!
 
+Please make sure to ONLY use this servers where it is allowed.
+
 ## Features
 
 - **Auto-swing**: Automatically swings the player's weapon when ready to attack.
@@ -29,12 +31,12 @@ Use the in-game menu to adjust these values to your liking.
 
 ## Controls
 
-- **Toggle Mod**: Press the configured key to toggle the mod on or off.
 - **Menu**: Open the mod settings menu with the assigned key.
 
 ## Keybindings
 
-You can customize the keybindings for toggling the mod and opening the menu. This is set within the Minecraft options under **Controls**.
+- You can customize the keybindings for toggling the mod and opening the menu. This is set within the Minecraft options under **Controls**.
+- The default key is U.
 
 ## Usage
 
