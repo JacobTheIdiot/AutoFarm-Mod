@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.c2s.play.HandSwingC2SPacket;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
@@ -60,10 +61,17 @@ public class AutoFarmClient implements ClientModInitializer {
 		long currentTime = System.currentTimeMillis();
 		long timeSinceAttack = currentTime - lastHit;
 		if (client.player.getAttackCooldownProgress(0) >= 1.0F && timeSinceAttack >= Config.swingDelay * 50) {
-			if (client.crosshairTarget instanceof EntityHitResult entityHit) {
-				client.interactionManager.attackEntity(client.player, entityHit.getEntity());
+				simulateAttack();
 				lastHit = currentTime;
 			}
+		}
+	private void simulateAttack() {
+		if (client.player == null || client.interactionManager == null) return;
+
+		if (client.crosshairTarget instanceof EntityHitResult entityHit) {
+			client.interactionManager.attackEntity(client.player, entityHit.getEntity());
+
+			client.player.swingHand(Hand.MAIN_HAND);
 		}
 	}
 
