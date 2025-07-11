@@ -15,6 +15,8 @@ public class AutoFarmMenu extends Screen {
     private SliderWidget eatHungerSlider;
     private static final MinecraftClient client = MinecraftClient.getInstance();
     private ButtonWidget toggleButton;
+    private ButtonWidget passiveMobToggle;
+    public static boolean hostileMob = true;
 
     protected AutoFarmMenu() {
         super(Text.of("AutoFarm Settings"));
@@ -88,16 +90,25 @@ public class AutoFarmMenu extends Screen {
                     toggleMod();
                     button.setMessage(getToggleText());
                 })
-                .dimensions(centerX - 50, centerY + 40, 100, 20)
+                .dimensions(centerX - 50, centerY + 40, 110, 20)
                 .build();
         this.addDrawableChild(toggleButton);
 
 
+        this.passiveMobToggle = ButtonWidget.builder(Text.of("Ignore Passive: " + (hostileMob ? "§aON" : "§cOFF")), (button) ->
+                {
+                    hostileMob = !hostileMob;
+                    button.setMessage(Text.of("Ignore Passive: " + (hostileMob ? "§aON" : "§cOFF")));
+                })
+                .dimensions(centerX - 50, centerY + 70, 110, 20)
+                .build();
+        this.addDrawableChild(passiveMobToggle);
 
         ButtonWidget closeButton = ButtonWidget.builder(Text.of("Close"), (button) -> client.setScreen(null))
-                .dimensions(centerX - 50, centerY + 70, 100, 20)
+                .dimensions(centerX - 50, centerY + 100, 110, 20)
                 .build();
         this.addDrawableChild(closeButton);
+
     }
 
 
@@ -127,5 +138,13 @@ public class AutoFarmMenu extends Screen {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
+        long time = System.currentTimeMillis();
+
+        // watermark lol
+        float hue = (time % 5000L) / 5000.0f;
+        int rgb = java.awt.Color.HSBtoRGB(hue, 0.5f, 1.0f);
+
+        context.drawText(this.textRenderer, "AutoFarm Menu - By JacobTheIdiot", 5, 5, rgb, false);
     }
+
 }

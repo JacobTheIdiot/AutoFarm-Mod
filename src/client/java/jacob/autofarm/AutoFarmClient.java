@@ -4,6 +4,9 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.c2s.play.HandSwingC2SPacket;
 import net.minecraft.text.Text;
@@ -71,6 +74,11 @@ public class AutoFarmClient implements ClientModInitializer {
 		if (client.player == null || client.interactionManager == null) return;
 
 		if (client.crosshairTarget instanceof EntityHitResult entityHit) {
+			Entity target = entityHit.getEntity();
+
+			if (AutoFarmMenu.hostileMob && target instanceof PassiveEntity || target instanceof PlayerEntity){
+				return;
+			}
 			client.interactionManager.attackEntity(client.player, entityHit.getEntity());
 
 			client.player.swingHand(Hand.MAIN_HAND);
