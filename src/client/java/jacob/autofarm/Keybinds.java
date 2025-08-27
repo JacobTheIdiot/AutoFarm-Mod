@@ -7,12 +7,12 @@ import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
 public class Keybinds {
-    private static final String CATEGORY = "key.categories.autofarm";
+    private static final String CATEGORY = "AutoFarm";
     public static KeyBinding openMenuKey;
 
     public static void register() {
         openMenuKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.autofarm.open_menu",
+                "Open Menu",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_U,
                 CATEGORY

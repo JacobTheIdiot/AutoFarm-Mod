@@ -1,5 +1,6 @@
 package jacob.autofarm;
 
+import jacob.autofarm.manager.ConfigManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -110,6 +111,14 @@ public class AutoFarmMenu extends Screen {
         this.addDrawableChild(closeButton);
 
     }
+
+    @Override
+    public void removed() {
+        super.removed();
+        ConfigManager.saveConfig();
+    }
+
+
 
 
     private void checkModState() {

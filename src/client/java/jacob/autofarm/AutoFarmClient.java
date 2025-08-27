@@ -1,5 +1,6 @@
 package jacob.autofarm;
 
+import jacob.autofarm.manager.ConfigManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
@@ -12,6 +13,8 @@ import net.minecraft.network.packet.c2s.play.HandSwingC2SPacket;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
+
+import java.io.IOException;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
 
@@ -43,7 +46,13 @@ public class AutoFarmClient implements ClientModInitializer {
 			}
 		});
 
-		LOGGER.info("AutoFarm Client Initialized!");
+        try {
+            ConfigManager.init();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        LOGGER.info("AutoFarm Client Initialized!");
 	}
 
 	public static void toggleMod() {
