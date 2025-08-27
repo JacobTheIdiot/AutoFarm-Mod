@@ -11,11 +11,13 @@ Please make sure to ONLY use this servers where it is allowed.
 - **Auto-eat**: Automatically eats food when the player's hunger is below a threshold.
 - **Auto-logout**: Logs out automatically if health falls below a set threshold.
 - **Customizable**: All settings are adjustable through a simple in-game menu.
+- **Automatic Saving**: Your config automatically saves to ```.minecraft/config/autofarm``` so you never lose your settings!
+- **Ignores Players**: If someone walks in front of you while farming you won't hit them!
 
 ## Installation
 
 1. Install **Fabric** and **Fabric API**.
-2. Download the mod's `.jar` file from the releases page (or clone this repo and build it yourself).
+2. Download the mod's `.jar` file
 3. Place the `.jar` file in the `mods` folder of your Minecraft setup.
 4. Launch Minecraft with Fabric loader.
 
@@ -26,6 +28,7 @@ The mod includes an in-game menu for configuration. The available settings are:
 - **Logout Health**: The health level at which the player will automatically log out (in hearts).
 - **Swing Delay**: The delay between auto swings (in ticks, max 50).
 - **Eat Hunger**: The hunger level at which the player will automatically eat food.
+- **Ignore Passive**: This will ignore passive mobs while farming so you can keep your pets safe!
 
 Use the in-game menu to adjust these values to your liking.
 
